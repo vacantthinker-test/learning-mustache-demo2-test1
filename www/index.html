@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>hello mustache</h1>
+<div id="app"></div>
+
+
+<script src="bundle.js"></script>
+<script>
+    let data = {
+        arr: [
+            {name: 'wu', age: 21, hobbies: ['swim', 'code']},
+            {name: 'li', age: 24, hobbies: ['walk',]},
+            {name: 'kong', age: 20, hobbies: ['code', 'playgame']},
+        ]
+    }
+    let template = `
+        <ul>
+            {{#arr}}
+            <li>
+                {{name}}'s hobbies:
+                <ol>
+                    {{#hobbies}}
+                    <li>{{.}}</li>
+                    {{/hobbies}}
+                </ol>
+            </li>
+            {{/arr}}
+        </ul>
+        `
+    // let template = `<h1>i bought a {{thing}}, so {{mood}}.</h1>`
+    // let data = { thing:'apple', mood: 'happy',}
+    let render = window.MyTemplateEngine.render(template, data);
+    document.getElementById('app').innerHTML = render;
+</script>
+</body>
+</html>
